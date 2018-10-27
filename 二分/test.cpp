@@ -1,37 +1,60 @@
-#include<iostream>
-#include<algorithm>
-#include<cstdio>
-using namespace std;
-int l,n,m,a[50003],ans;//定义变量
-int count(int mid)
+#include <stdio.h>
+#include <string.h>
+ 
+int a[15],vis[15],ans;
+ 
+int abs(int x)
 {
-    int j=0,x=0;//x记录删去石头数
-    for(int i=1;i<=n+1;i++)
-    {
-        if(a[i]-a[j] < mid)//石头间距离如果小于枚举的，就记录并删去。
-        x++;
-        else j=i;//否则移动起点。
-    }
+    if(x<0)
+    return -x;
     return x;
 }
+ 
+void dfs(int cnt,int sum)
+{
+    int i,j;
+    if(sum>=ans)
+    return ;
+    if(cnt == 9)
+    {
+        ans = sum;
+        return ;
+    }
+    for(i = 1;i<10;i++)
+    {
+        if(!vis[i])
+        {
+            vis[i] = 1;
+            for(j = i+1;j<=10;j++)
+            {
+                if(!vis[j])
+                {
+                    dfs(cnt+1,sum+abs(a[i]-a[j]));
+                    break;
+                }
+            }
+            vis[i] = 0;
+        }
+    }
+}
+ 
 int main()
 {
-    scanf("%d%d%d",&l,&n,&m);
-    for(int i=1;i<=n;i++)
-    scanf("%d",&a[i]);
-    sort(a+1,a+1+n); //别忘了排序。
-    a[n+1]=l;//记录终点
-    int left=1,right=l;
-    while(left<=right)//开始二分。
+    int t,i,x;
+    scanf("%d",&t);
+    while(t--)
     {
-        int middle=(left+right)/2;
-        if(count(middle)<=m)//计数函数
+        for(i = 1;i<=10;i++)
         {
-        ans=middle;
-        left=middle+1;  
-        } 
-        else right=middle-1;
+            scanf("%d",&x);
+            a[x] = i;//???x????i???
+        }
+        memset(vis,0,sizeof(vis));
+        ans = 10000000;
+        dfs(0,0);
+        printf("%d\n",ans);
     }
-    printf("%d",ans);//输出
+ 
     return 0;
 }
+
