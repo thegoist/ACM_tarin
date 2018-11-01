@@ -14,7 +14,7 @@ int ans = 1;
 void dfs(int x,int y,int d,int &step){
 	int nx,ny;
 	ans = step;
-//	cout<<x<<y<<"  "<<step<<" "<<a[x][y]<<ans<<endl;
+	cout<<x<<y<<"  "<<step<<" "<<a[x][y]<<ans<<endl;
 	if (a[x][y] == '.')
 	{
 		step+=1;
@@ -80,21 +80,6 @@ int main()
 
 		int step = 1;
 		dfs(start_x,start_y,op,step);
-		// int nx,ny;
-		// if (a[start_x][start_y] == 'U')
-		// {
-		// 	dfs(start_x,start_y,0,step);
-		// }else if (a[start_x][start_y] == 'R')
-		// {
-		// 	dfs(start_x,start_y,1,step);
-		// }else if (a[start_x][start_y] == 'D')
-		// {
-		// 	dfs(start_x,start_y,2,step);
-		// }else if (a[start_x][start_y] == 'L')
-		// {
-		// 	dfs(start_x,start_y,3,step);
-		// } 
-		
 		printf("%d\n",step);
 		
 //		for(int i = 0; i<w;i++){
