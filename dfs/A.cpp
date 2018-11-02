@@ -1,6 +1,7 @@
 #include<cstdio>
 /*
  本题现在的水平，DFS暂时还做不出来 
+ BFS已经做出来了 详见A_bfs.cpp 
 */ 
 //#include<bits/stdc++.h>
 using namespace std;
