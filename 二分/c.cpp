@@ -49,7 +49,7 @@ int main(){
 			}else{
 				R = mid - 1;
 			}
-		printf("ans %d  L %d  R %d\n",ans,L,R);
+//		printf("ans %d  L %d  R %d\n",ans,L,R);
 		}
 		printf("%d\n",ans); 
 		 
